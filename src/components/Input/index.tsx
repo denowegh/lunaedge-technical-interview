@@ -1,18 +1,20 @@
-import React, { ReactNode, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { EnvelopeIcon, EyeSlashIcon, EyeIcon } from '@heroicons/react/24/solid';
 import { InformationCircleIcon } from '@heroicons/react/20/solid';
+
 export type PropsCustomButton = {
 	disabled?: boolean;
 	type?: 'text' | 'password' | 'email' | 'number';
 	className?: string;
 	placeholder?: string;
-
+	value?: string | number | readonly string[];
 	id: string;
 	label?: string;
 	tooltip?: string;
 	error?: boolean;
-	massage?: string;
+	message?: string;
 	onChange?: React.ChangeEventHandler<HTMLInputElement>;
+	onBlur?: React.FocusEventHandler<HTMLDivElement>;
 };
 
 export default function index({
@@ -22,15 +24,18 @@ export default function index({
 	label = '',
 	tooltip = '',
 	className = '',
+	value,
 	error = false,
 	disabled = false,
-	massage = '',
+	message = '',
 	onChange = () => {},
+	onBlur,
 }: PropsCustomButton) {
 	const [typeInput, setTypeInput] =
 		useState<React.HTMLInputTypeAttribute>(type);
 	return (
 		<div
+			onBlur={onBlur}
 			className={`w-[400px] flex flex-col gap-[8px] justify-center ${className}`}
 		>
 			<label htmlFor={id} className='flex flex-row items-center'>
@@ -61,6 +66,7 @@ export default function index({
 				<input
 					type={typeInput}
 					id={id}
+					value={value}
 					disabled={disabled}
 					onChange={onChange}
 					className={`w-full h-full text-sm ${
@@ -90,7 +96,7 @@ export default function index({
 					</button>
 				)}
 			</div>
-			<p className={`${error && !disabled && 'text-rose-500'}`}>{massage}</p>
+			<p className={`${error && !disabled && 'text-rose-500'}`}>{message}</p>
 		</div>
 	);
 }

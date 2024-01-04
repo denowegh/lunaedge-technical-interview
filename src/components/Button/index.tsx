@@ -87,7 +87,7 @@ export default function index({
 	return (
 		<button
 			type={type}
-			className={`flex items-center justify-evenly ${height} py-1 px-3 rounded ${
+			className={`flex items-center justify-evenly ${height} py-1 px-2 rounded ${
 				colors?.bgColor || ''
 			}  text-base ${colors?.textColor || ''} border border-1 ${
 				colors?.outlineColor || ''

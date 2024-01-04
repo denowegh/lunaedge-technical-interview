@@ -7,12 +7,13 @@ import {
 import Badge, { BadgeRounded, BadgeTheme } from '../Badge';
 import ButtonSort from '../ButtonSort';
 
-interface Option {
+export interface Option {
 	value: string;
 	label: string;
 	key: any;
 	theme: BadgeTheme;
 }
+
 interface MultiselectDropdownProps {
 	options: Option[];
 	onChange?: (selected: Option['value'][]) => void;
@@ -21,8 +22,8 @@ interface MultiselectDropdownProps {
 	error?: boolean;
 	tooltip?: string;
 	label?: string;
+	className?: string;
 	massage?: string;
-	sortFunc?: '' | 'ByName' | '';
 }
 
 const MultiselectDropdown: React.FC<MultiselectDropdownProps> = ({
@@ -30,15 +31,18 @@ const MultiselectDropdown: React.FC<MultiselectDropdownProps> = ({
 	placeholder = '',
 	error,
 	disabled,
+	className,
 	tooltip = '',
 	onChange,
 	label = '',
 	massage = '',
 }) => {
 	const [selectedOptions, setSelectedOptions] = useState<Option[]>([]);
-	const [sortedOptions, setSortedOptions] = useState<Option[]>(options);
+	const [sortedOptions, setSortedOptions] = useState<Option[]>([]);
 	const [isOpen, setIsOpen] = useState(false);
-
+	useEffect(() => {
+		setSortedOptions(options);
+	}, [options]);
 	const toggleDropdown: React.MouseEventHandler<HTMLDivElement> = e => {
 		setIsOpen(!isOpen);
 	};
@@ -92,7 +96,7 @@ const MultiselectDropdown: React.FC<MultiselectDropdownProps> = ({
 	};
 
 	return (
-		<div className='relative w-[400px] m-2'>
+		<div className={`relative w-[400px] m-2 ${className} `}>
 			<div className='flex flex-col gap-[8px]'>
 				<label className='flex flex-row items-center'>
 					{label}

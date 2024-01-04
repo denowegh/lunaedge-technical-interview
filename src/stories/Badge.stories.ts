@@ -7,10 +7,6 @@ const meta: Meta<typeof Badge> = {
 	component: Badge,
 	tags: ['autodocs'],
 	argTypes: {
-		variant: {
-			options: ['point', 'cancel', 'default'],
-			control: { type: 'select' },
-		},
 		theme: {
 			options: BadgeTheme,
 			control: { type: 'select' },
@@ -39,7 +35,7 @@ export const CancelBadge: StoryObj<typeof Badge> = {
 		theme: BadgeTheme.Green,
 	},
 };
-export const PointBadge: StoryObj<typeof Badge> = {
+export const PointtBadge: StoryObj<typeof Badge> = {
 	args: {
 		children: 'badge',
 		variant: 'point',
