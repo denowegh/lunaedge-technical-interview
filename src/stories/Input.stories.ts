@@ -25,7 +25,7 @@ export const PasswordInput: StoryObj<typeof Input> = {
 		type: 'password',
 		placeholder: 'placeholder',
 		tooltip: 'tooltip',
-		massage: 'massage',
+		message: 'massage',
 	},
 };
 export const ErrorInput: StoryObj<typeof Input> = {
@@ -36,7 +36,7 @@ export const ErrorInput: StoryObj<typeof Input> = {
 		placeholder: 'placeholder',
 		tooltip: 'tooltip',
 		error: true,
-		massage: 'massage',
+		message: 'massage',
 	},
 };
 export const DisabledInput: StoryObj<typeof Input> = {
@@ -47,6 +47,6 @@ export const DisabledInput: StoryObj<typeof Input> = {
 		placeholder: 'placeholder',
 		tooltip: 'tooltip',
 		disabled: true,
-		massage: 'massage',
+		message: 'massage',
 	},
 };
